@@ -1,0 +1,83 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+#import "Player.h"
+#import "SetupScene.h"
+#import "PlayScene.h"
+#import "TutorialScene.h"
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "SKTUtils.h"
+#endif
+
+extern CGPoint crosshairPosition;
+extern Player *GPlayer;
+extern CGPoint touchPosition;
+extern CGPoint previoustouchPosition;
+extern CGPoint deltaPoint;
+
+typedef NS_OPTIONS(NSUInteger, CollisionCatgeory) {
+    ColliderTypePlayer      = (1 << 0),
+    ColliderTypeEnemy       = (1 << 1),
+    ColliderTypeBullet      = (1 << 2),
+    ColliderTypeMoney       = (1 << 4),
+    ColliderTypePowerup       = (1 << 8),
+};
+
+extern int GameWidth;
+extern int GameHeight;
+
+extern int score;
+extern int waves;
+extern int HPMAX;
+
+typedef NS_OPTIONS(NSUInteger, Weapon) {
+    BigShot = 1,
+    DoubleShot = 2,
+    Spread = 3
+};
+extern Weapon selectedWeapon;
+extern double WeaponDamage;
+
+typedef NS_OPTIONS(NSUInteger, PowerUpType) {
+    Bomb = 1,
+    GunSwap = 2,
+};
+
+extern NSMutableArray *explodeTextures;
+extern NSMutableArray *explodeTexturesSmall;
+extern NSArray *thrusterTexturesLong;
+extern NSArray *thrusterTexturesShort;
+
+extern SKTexture *zoomerTex;
+extern SKTexture *rounderTex;
+extern SKTexture *updownerTex;
+extern SKTexture *shooterTex;
+
+extern SetupScene *setupScene;
+extern PlayScene *playScene;
+extern TutorialScene *tutorialScene;
+
+extern int HighScore;
+extern int GamesPlayed;
+
+extern int RoundersDefeated;
+extern int ZoomersDefeated;
+extern int UpdownersDefeated;
+extern int ShootersDefeated;
+
+extern int WeaponSwitchCount;
+
+extern BOOL isTutorial;
+extern BOOL isGameOver;
+extern int AdCounter;
